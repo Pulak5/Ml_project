@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 from dataclasses import dataclass
 from src.utils import save_object
+from src.components.data_ingestion import DataIngestion
 
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -89,4 +90,13 @@ class DataTransformation:
 
         except Exception as e:
             raise CustomException(e,sys)
+        
+    def data_transformation(self):
+        try:
+            obj=DataIngestion()
+            train_path,test_path=obj.initiate_data_ingestion()
+            return self.initiate_data_transformation(train_path=train_path,test_path=test_path)
+        except Exception as e:
+            raise CustomException(e,sys)
+        
         
