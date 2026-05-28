@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Page</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial, Helvetica, sans-serif;
+            background:#0f172a;
+            color:white;
+        }
+
+        .container{
+            width:50%;
+            margin:auto;
+            margin-top:40px;
+            background:#1e293b;
+            padding:40px;
+            border-radius:15px;
+        }
+
+        h1{
+            text-align:center;
+            color:#38bdf8;
+            margin-bottom:30px;
+        }
+
+        label{
+            font-size:18px;
+            display:block;
+            margin-top:15px;
+        }
+
+        select,input{
+            width:100%;
+            padding:12px;
+            margin-top:8px;
+            border:none;
+            border-radius:8px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            margin-top:30px;
+            padding:15px;
+            border:none;
+            border-radius:10px;
+            background:#38bdf8;
+            font-size:20px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#0ea5e9;
+        }
+
+        .result{
+            margin-top:30px;
+            padding:20px;
+            background:#334155;
+            border-radius:10px;
+            text-align:center;
+            font-size:24px;
+        }
+
+        .home-btn{
+            display:inline-block;
+            margin-top:20px;
+            text-decoration:none;
+            color:white;
+            font-size:18px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Exam Performance Predictor</h1>
+
+        <form action="/predictdata" method="POST">
+
+            <label>Gender</label>
+            <select name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label>Race or Ethnicity</label>
+            <select name="ethnicity" required>
+                <option value="group A">Group A</option>
+                <option value="group B">Group B</option>
+                <option value="group C">Group C</option>
+                <option value="group D">Group D</option>
+                <option value="group E">Group E</option>
+            </select>
+
+            <label>Parental Level of Education</label>
+            <select name="parental_level_of_education" required>
+                <option value="associate's degree">Associate's Degree</option>
+                <option value="bachelor's degree">Bachelor's Degree</option>
+                <option value="high school">High School</option>
+                <option value="master's degree">Master's Degree</option>
+                <option value="some college">Some College</option>
+                <option value="some high school">Some High School</option>
+            </select>
+
+            <label>Lunch Type</label>
+            <select name="lunch" required>
+                <option value="standard">Standard</option>
+                <option value="free/reduced">Free/Reduced</option>
+            </select>
+
+            <label>Test Preparation Course</label>
+            <select name="test_preparation_course" required>
+                <option value="none">None</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <label>Reading Score</label>
+            <input type="number" name="reading_score" required>
+
+            <label>Writing Score</label>
+            <input type="number" name="writing_score" required>
+
+            <button type="submit">
+                Predict Math Score
+            </button>
+
+        </form>
+
+        {% if results %}
+
+        <div class="result">
+
+            Predicted Math Score : {{ results }}
+
+        </div>
+
+        {% endif %}
+
+        <a href="/" class="home-btn">
+            ← Back To Home
+        </a>
+
+    </div>
+
+</body>
+</html>
