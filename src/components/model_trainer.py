@@ -4,7 +4,6 @@ from dataclasses import dataclass
 
 from sklearn.ensemble import RandomForestRegressor,AdaBoostRegressor,GradientBoostingRegressor
 from sklearn.linear_model import LinearRegression
-from xgboost import XGBRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
@@ -32,7 +31,6 @@ class ModelTrainer:
             models={
                 "Random Forest":RandomForestRegressor(),
                 "Decision Tree":DecisionTreeRegressor(),
-                "Xgboost regressor":XGBRegressor(),
                 "Linear Regression":LinearRegression(),
                 "K-Nearest Neighbours":KNeighborsRegressor(),
                 "Adaboosting Regressor":AdaBoostRegressor(),
